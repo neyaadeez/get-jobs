@@ -19,7 +19,6 @@ func GetGoogleJobs() (JobsResponse, error) {
 		return JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
 	}
 
-	// Parse the response body
 	return parseJobPage(resp.Body())
 }
 
