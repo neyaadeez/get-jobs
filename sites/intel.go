@@ -3,7 +3,6 @@ package sites
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 )
@@ -14,7 +13,7 @@ func GetIntelJobs(days int) (JobsResponse, error) {
 
 	_, err := client.R().Get(url)
 	if err != nil {
-		log.Fatalf("Error accessing the URL: %v", err)
+		return JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
 	}
 
 	payload := `{
@@ -51,13 +50,13 @@ func GetIntelJobs(days int) (JobsResponse, error) {
 		Post(jobURL)
 
 	if err != nil {
-		log.Fatalf("Error fetching job listings: %v", err)
+		return JobsResponse{}, fmt.Errorf("error fetching job listings: %v", err)
 	}
 
 	var jobsResponse JobsResponse
 	err = json.Unmarshal(resp.Body(), &jobsResponse)
 	if err != nil {
-		log.Fatalf("Error parsing response: %v", err)
+		return JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
 	}
 
 	filteredJobs := filterJobsByDays(jobsResponse.JobPostings, days)

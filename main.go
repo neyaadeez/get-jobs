@@ -7,10 +7,5 @@ import (
 )
 
 func main() {
-	resp, err := sites.GetIntelJobs(4)
-	if err != nil {
-		return
-	}
-
-	fmt.Println(resp)
+	
 }
