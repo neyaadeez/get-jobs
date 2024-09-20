@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-func GetIntelJobs() ([]JobPosting, error) {
+func GetNvidiaJobs() ([]JobPosting, error) {
 
 	offset := 20
 	var jobPostings []JobPosting
-	resp, err := intelJobs(0)
+	resp, err := nvidiaJobs(0)
 	if err != nil {
 		return []JobPosting{}, err
 	}
@@ -18,7 +18,7 @@ func GetIntelJobs() ([]JobPosting, error) {
 	jobPostings = append(jobPostings, resp.JobPostings...)
 	for {
 		if len(jobPostings) < resp.Total {
-			r, err := intelJobs(offset)
+			r, err := nvidiaJobs(offset)
 			if err != nil {
 				return jobPostings, err
 			}
@@ -33,34 +33,30 @@ func GetIntelJobs() ([]JobPosting, error) {
 	return jobPostings, nil
 }
 
-func intelJobs(offset int) (JobsResponse, error) {
+func nvidiaJobs(offset int) (JobsResponse, error) {
 	client := GetClient()
 
-	preURL := "https://intel.wd1.myworkdayjobs.com/en-US/External"
-	jobURL := "https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs"
+	preURL := "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite"
+	jobURL := "https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs"
 	payload := `{
-		"appliedFacets": {
-			"locations": [
-				"1e4a4eb3adf101b8aec18a77bf810dd0",
-				"1e4a4eb3adf1018c4bf78f77bf8112d0",
-				"1e4a4eb3adf1013ddb7bd877bf8153d0",
-				"1e4a4eb3adf10129d05fe377bf815dd0",
-				"1e4a4eb3adf10118b1dfe877bf8162d0",
-				"1e4a4eb3adf10155d1cc0778bf8180d0",
-				"1e4a4eb3adf101d4e5a61779bf8159d1",
-				"1e4a4eb3adf10146fd5c5276bf81eece",
-				"1e4a4eb3adf1011246675c76bf81f8ce",
-				"1e4a4eb3adf1016541777876bf8111cf",
-				"1e4a4eb3adf101fa2a777d76bf8116cf",
-				"1e4a4eb3adf101770f350977bf8193cf",
-				"1e4a4eb3adf10174f0548376bf811bcf",
-				"1e4a4eb3adf101cc4e292078bf8199d0"
-			]
-		},
-		"limit": 20,
-		"offset": %d,
-		"searchText": ""
-	}`
+  "appliedFacets": {
+    "locationHierarchy1": [
+      "2fcb99c455831013ea52fb338f2932d8"
+    ],
+    "jobFamilyGroup": [
+      "0c40f6bd1d8f10ae43ffaefd46dc7e78",
+      "0c40f6bd1d8f10ae43ffc3fc7d8c7e8a",
+      "0c40f6bd1d8f10ae43ffc668c6847e8c",
+      "0c40f6bd1d8f10ae43ffbd1459047e84"
+    ],
+    "workerSubType": [
+      "ab40a98049581037a3ada55b087049b7"
+    ]
+  },
+  "limit": 20,
+  "offset": %d,
+  "searchText": ""
+}`
 
 	payload = fmt.Sprintf(payload, offset)
 

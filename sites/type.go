@@ -2,6 +2,7 @@ package sites
 
 // Job represents the structure to hold job listing data
 type JobPosting struct {
+	JobId        string
 	JobTitle     string `json:"title"`
 	Location     string `json:"locationsText"`
 	PostedOn     string `json:"postedOn"`
