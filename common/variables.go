@@ -10,4 +10,5 @@ var (
 	SalesForce  = "SLSF"
 	Walmart     = "WLMT"
 	Target      = "TRGT"
+	Samsung     = "SMSN"
 )
