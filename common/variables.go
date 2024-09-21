@@ -9,4 +9,5 @@ var (
 	Qualys      = "QLYS"
 	SalesForce  = "SLSF"
 	Walmart     = "WLMT"
+	Target      = "TRGT"
 )
