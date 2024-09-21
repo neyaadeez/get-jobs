@@ -1,4 +1,4 @@
-package sites
+package common
 
 // Job represents the structure to hold job listing data
 type JobPosting struct {
@@ -13,4 +13,12 @@ type JobPosting struct {
 type JobsResponse struct {
 	JobPostings []JobPosting `json:"jobPostings"`
 	Total       int          `json:"total"`
+}
+
+// WorkdayPayload
+type WorkdayPayload struct {
+	CmpCode string
+	PreURL  string
+	JobsURL string
+	PayLoad string
 }

@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/neyaadeez/go-get-jobs/common"
 )
 
 type OracleJob struct {
@@ -26,28 +28,28 @@ type OracleJobResponse struct {
 	} `json:"items"`
 }
 
-func GetOracleJobs(days int, keyword string) (JobsResponse, error) {
-	client := GetClient()
+func GetOracleJobs(days int, keyword string) (common.JobsResponse, error) {
+	client := common.GetClient()
 
 	url := formatOracleURL("https://eeho.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions", keyword, days)
 
 	// url := "https://eeho.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations,flexFieldsFacet.values,requisitionList.requisitionFlexFields&finder=findReqs;siteNumber=CX_45001,facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,limit=50,lastSelectedFacet=POSTING_DATES,locationId=300000000149325,selectedCategoriesFacet=300000001917356%3B300000001917346,selectedLocationsFacet=300000000149325,selectedPostingDatesFacet=7,sortBy=POSTING_DATES_DESC"
 	resp, err := client.R().Get(url)
 	if err != nil {
-		return JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
+		return common.JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
 	}
 
-	var jobsResponse OracleJobResponse
-	err = json.Unmarshal(resp.Body(), &jobsResponse)
+	var jobsResponseOracle OracleJobResponse
+	err = json.Unmarshal(resp.Body(), &jobsResponseOracle)
 	if err != nil {
-		return JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
+		return common.JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
 	}
 
-	filteredJobs := filterOracleJobsByDays(jobsResponse.Items[0].RequisitionList, days)
+	filteredJobs := filterOracleJobsByDays(jobsResponseOracle.Items[0].RequisitionList, days)
 
-	var jobPostings []JobPosting
+	var jobPostings []common.JobPosting
 	for _, job := range filteredJobs {
-		jobPosting := JobPosting{
+		jobPosting := common.JobPosting{
 			JobTitle:     job.Title,
 			Location:     formatOracleLocations(job.PrimaryLocation, job.SecondaryLocations),
 			PostedOn:     job.PostedDate,
@@ -56,7 +58,7 @@ func GetOracleJobs(days int, keyword string) (JobsResponse, error) {
 		jobPostings = append(jobPostings, jobPosting)
 	}
 
-	return JobsResponse{
+	return common.JobsResponse{
 		JobPostings: jobPostings,
 		Total:       len(jobPostings),
 	}, nil

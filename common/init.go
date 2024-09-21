@@ -1,4 +1,4 @@
-package sites
+package common
 
 import (
 	"sync"
@@ -8,7 +8,7 @@ import (
 
 var (
 	clientOnce sync.Once
-	clientO     *resty.Client
+	clientO    *resty.Client
 )
 
 func GetClient() *resty.Client {

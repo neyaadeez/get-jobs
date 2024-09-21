@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/neyaadeez/go-get-jobs/common"
 )
 
 type MicrosoftJob struct {
@@ -28,8 +30,8 @@ type MicrosoftJobResponse struct {
 	} `json:"operationResult"`
 }
 
-func GetMicrosoftJobs(days int, keyword string) (JobsResponse, error) {
-	client := GetClient()
+func GetMicrosoftJobs(days int, keyword string) (common.JobsResponse, error) {
+	client := common.GetClient()
 
 	url := formatURL("https://gcsservices.careers.microsoft.com/search/api/v1/search", keyword)
 
@@ -37,20 +39,20 @@ func GetMicrosoftJobs(days int, keyword string) (JobsResponse, error) {
 
 	resp, err := client.R().Get(url)
 	if err != nil {
-		return JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
+		return common.JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
 	}
 
-	var jobsResponse MicrosoftJobResponse
-	err = json.Unmarshal(resp.Body(), &jobsResponse)
+	var jobsResponseMicrosoft MicrosoftJobResponse
+	err = json.Unmarshal(resp.Body(), &jobsResponseMicrosoft)
 	if err != nil {
-		return JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
+		return common.JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
 	}
 
-	filteredJobs := filterMicrosoftJobsByDays(jobsResponse.OperationResult.Result.Jobs, days)
+	filteredJobs := filterMicrosoftJobsByDays(jobsResponseMicrosoft.OperationResult.Result.Jobs, days)
 
-	var jobPostings []JobPosting
+	var jobPostings []common.JobPosting
 	for _, job := range filteredJobs {
-		jobPosting := JobPosting{
+		jobPosting := common.JobPosting{
 			JobTitle:     job.Title,
 			Location:     formatLocations(job.Properties.Locations),
 			PostedOn:     job.PostingDate,
@@ -59,7 +61,7 @@ func GetMicrosoftJobs(days int, keyword string) (JobsResponse, error) {
 		jobPostings = append(jobPostings, jobPosting)
 	}
 
-	return JobsResponse{
+	return common.JobsResponse{
 		JobPostings: jobPostings,
 		Total:       len(jobPostings),
 	}, nil
