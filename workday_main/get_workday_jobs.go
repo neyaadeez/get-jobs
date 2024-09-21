@@ -1,4 +1,4 @@
-package workday
+package workdaymain
 
 import (
 	"encoding/json"

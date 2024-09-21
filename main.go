@@ -4,10 +4,11 @@ import (
 	"fmt"
 
 	"github.com/neyaadeez/go-get-jobs/workday"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
 )
 
 func main() {
-	resp, err := workday.GetWorkdayJobs(workday.Target)
+	resp, err := workdaymain.GetWorkdayJobs(workday.Intel)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
