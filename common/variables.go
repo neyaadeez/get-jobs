@@ -8,5 +8,5 @@ var (
 	Nvidia      = "NVDA"
 	Qualys      = "QLYS"
 	SalesForce  = "SLSF"
-	
+	Walmart     = "WLMT"
 )
