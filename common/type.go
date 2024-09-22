@@ -4,8 +4,8 @@ package common
 type JobPosting struct {
 	JobId        string
 	JobTitle     string `json:"title"`
-	Location     string `json:"locationsText"`
-	PostedOn     string `json:"postedOn"`
+	Location     string `json:"locationsText,omitempty"`
+	PostedOn     string `json:"postedOn,omitempty"`
 	ExternalPath string `json:"externalPath"`
 }
 
