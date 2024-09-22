@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Disney = common.WorkdayPayload{
-	CmpCode: common.Disney,
-	PreURL:  "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer",
-	JobsURL: "https://disney.wd5.myworkdayjobs.com/wday/cxs/disney/disneycareer/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Disney, common.WorkdayPayload{
+		CmpCode: common.Disney,
+		PreURL:  "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer",
+		JobsURL: "https://disney.wd5.myworkdayjobs.com/wday/cxs/disney/disneycareer/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locations": [
       "4f84d9e8a09701011a6aef3d93fc0000",
@@ -57,4 +61,5 @@ var Disney = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

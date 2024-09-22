@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Samsung = common.WorkdayPayload{
-	CmpCode: common.Samsung,
-	PreURL:  "https://sec.wd3.myworkdayjobs.com/en-US/Samsung_Careers",
-	JobsURL: "https://sec.wd3.myworkdayjobs.com/wday/cxs/sec/Samsung_Careers/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Samsung, common.WorkdayPayload{
+		CmpCode: common.Samsung,
+		PreURL:  "https://sec.wd3.myworkdayjobs.com/en-US/Samsung_Careers",
+		JobsURL: "https://sec.wd3.myworkdayjobs.com/wday/cxs/sec/Samsung_Careers/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "Location_Country": [
       "bc33aa3152ec42d4995f4791a106ed09"
@@ -22,4 +26,5 @@ var Samsung = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

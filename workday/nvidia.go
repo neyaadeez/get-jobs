@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Nvidia = common.WorkdayPayload{
-	CmpCode: common.Nvidia,
-	PreURL:  "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
-	JobsURL: "https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Nvidia, common.WorkdayPayload{
+		CmpCode: common.Nvidia,
+		PreURL:  "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
+		JobsURL: "https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locationHierarchy1": [
       "2fcb99c455831013ea52fb338f2932d8"
@@ -25,4 +29,5 @@ var Nvidia = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

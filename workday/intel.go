@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Intel = common.WorkdayPayload{
-	CmpCode: common.Intel,
-	PreURL:  "https://intel.wd1.myworkdayjobs.com/en-US/External",
-	JobsURL: "https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Intel, common.WorkdayPayload{
+		CmpCode: common.Intel,
+		PreURL:  "https://intel.wd1.myworkdayjobs.com/en-US/External",
+		JobsURL: "https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs",
+		PayLoad: `{
 		"appliedFacets": {
 			"locations": [
 				"1e4a4eb3adf101b8aec18a77bf810dd0",
@@ -29,4 +33,5 @@ var Intel = common.WorkdayPayload{
 		"offset": %d,
 		"searchText": ""
 	}`,
+	})
 }

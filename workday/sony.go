@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Sony = common.WorkdayPayload{
-	CmpCode: common.Sony,
-	PreURL:  "https://sonyglobal.wd1.myworkdayjobs.com/en-US/SonyGlobalCareers",
-	JobsURL: "https://sonyglobal.wd1.myworkdayjobs.com/wday/cxs/sonyglobal/SonyGlobalCareers/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Sony, common.WorkdayPayload{
+		CmpCode: common.Sony,
+		PreURL:  "https://sonyglobal.wd1.myworkdayjobs.com/en-US/SonyGlobalCareers",
+		JobsURL: "https://sonyglobal.wd1.myworkdayjobs.com/wday/cxs/sonyglobal/SonyGlobalCareers/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locationCountry": [
       "bc33aa3152ec42d4995f4791a106ed09"
@@ -26,4 +30,5 @@ var Sony = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

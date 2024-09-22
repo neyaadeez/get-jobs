@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Snapchat = common.WorkdayPayload{
-	CmpCode: common.Snapchat,
-	PreURL:  "https://wd1.myworkdaysite.com/en-US/recruiting/snapchat/snap",
-	JobsURL: "https://wd1.myworkdaysite.com/wday/cxs/snapchat/snap/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Snapchat, common.WorkdayPayload{
+		CmpCode: common.Snapchat,
+		PreURL:  "https://wd1.myworkdaysite.com/en-US/recruiting/snapchat/snap",
+		JobsURL: "https://wd1.myworkdaysite.com/wday/cxs/snapchat/snap/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locations": [
       "efe1a86507310144a123773b020a0e37",
@@ -45,4 +49,5 @@ var Snapchat = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

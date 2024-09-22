@@ -35,9 +35,9 @@ var (
 	Barclays                = "BARC"
 )
 
-func checkDuplicates() {
-	valueMap := make(map[string]bool)
+var WorkdayCompanies = make(map[string]bool)
 
+func checkDuplicates() {
 	values := []string{
 		ASML,
 		CrowdStrike,
@@ -65,37 +65,11 @@ func checkDuplicates() {
 	}
 
 	for _, value := range values {
-		if valueMap[value] {
+		if WorkdayCompanies[value] {
 			fmt.Printf("Duplicate company code found: %s\n", value)
 			os.Exit(1)
 		} else {
-			valueMap[value] = true
+			WorkdayCompanies[value] = true
 		}
 	}
-}
-
-var Companies = []string{
-	"ASML",
-	"CrowdStrike",
-	"Intel",
-	"Nvidia",
-	"Qualys",
-	"SalesForce",
-	"Walmart",
-	"Target",
-	"Samsung",
-	"Disney",
-	"Sony",
-	"Twitter",
-	"CapitalOne",
-	"Boeing",
-	"Bose",
-	"Snapchat",
-	"CVS",
-	"CCCIntelligentSolutions",
-	"NorthropGrumman",
-	"Phinia",
-	"Nissan",
-	"HP",
-	"Barclays",
 }

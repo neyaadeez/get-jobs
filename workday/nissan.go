@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Nissan = common.WorkdayPayload{
-	CmpCode: common.Nissan,
-	PreURL:  "https://alliance.wd3.myworkdayjobs.com/en-US/nissanjobs",
-	JobsURL: "https://alliance.wd3.myworkdayjobs.com/wday/cxs/alliance/nissanjobs/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Nissan, common.WorkdayPayload{
+		CmpCode: common.Nissan,
+		PreURL:  "https://alliance.wd3.myworkdayjobs.com/en-US/nissanjobs",
+		JobsURL: "https://alliance.wd3.myworkdayjobs.com/wday/cxs/alliance/nissanjobs/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locationCountry": [
       "bc33aa3152ec42d4995f4791a106ed09"
@@ -20,4 +24,5 @@ var Nissan = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

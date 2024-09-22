@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Phinia = common.WorkdayPayload{
-	CmpCode: common.Phinia,
-	PreURL:  "https://phinia.wd5.myworkdayjobs.com/en-US/PHINIA_Careers",
-	JobsURL: "https://phinia.wd5.myworkdayjobs.com/wday/cxs/phinia/PHINIA_Careers/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Phinia, common.WorkdayPayload{
+		CmpCode: common.Phinia,
+		PreURL:  "https://phinia.wd5.myworkdayjobs.com/en-US/PHINIA_Careers",
+		JobsURL: "https://phinia.wd5.myworkdayjobs.com/wday/cxs/phinia/PHINIA_Careers/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "Location_Country": [
       "bc33aa3152ec42d4995f4791a106ed09"
@@ -20,4 +24,5 @@ var Phinia = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

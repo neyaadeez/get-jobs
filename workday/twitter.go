@@ -1,15 +1,20 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Twitter = common.WorkdayPayload{
-	CmpCode: common.Twitter,
-	PreURL:  "https://twitter.wd5.myworkdayjobs.com/en-US/X",
-	JobsURL: "https://twitter.wd5.myworkdayjobs.com/wday/cxs/twitter/X/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Twitter, common.WorkdayPayload{
+		CmpCode: common.Twitter,
+		PreURL:  "https://twitter.wd5.myworkdayjobs.com/en-US/X",
+		JobsURL: "https://twitter.wd5.myworkdayjobs.com/wday/cxs/twitter/X/jobs",
+		PayLoad: `{
   "appliedFacets": {},
   "limit": 20,
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

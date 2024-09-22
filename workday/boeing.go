@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Boeing = common.WorkdayPayload{
-	CmpCode: common.Boeing,
-	PreURL:  "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS",
-	JobsURL: "https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Boeing, common.WorkdayPayload{
+		CmpCode: common.Boeing,
+		PreURL:  "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS",
+		JobsURL: "https://boeing.wd1.myworkdayjobs.com/wday/cxs/boeing/EXTERNAL_CAREERS/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locationCountry": [
 	"bc33aa3152ec42d4995f4791a106ed09"
@@ -28,4 +32,5 @@ var Boeing = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

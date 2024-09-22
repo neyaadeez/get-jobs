@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var SalesForce = common.WorkdayPayload{
-	CmpCode: common.SalesForce,
-	PreURL:  "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site",
-	JobsURL: "https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.SalesForce, common.WorkdayPayload{
+		CmpCode: common.SalesForce,
+		PreURL:  "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site",
+		JobsURL: "https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "CF_-_REC_-_LRV_-_Job_Posting_Anchor_-_Country_from_Job_Posting_Location_Extended": [
       "bc33aa3152ec42d4995f4791a106ed09"
@@ -26,4 +30,5 @@ var SalesForce = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

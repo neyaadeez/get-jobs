@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var CVS = common.WorkdayPayload{
-	CmpCode: common.CVS,
-	PreURL:  "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers",
-	JobsURL: "https://cvshealth.wd1.myworkdayjobs.com/wday/cxs/cvshealth/CVS_Health_Careers/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.CVS, common.WorkdayPayload{
+		CmpCode: common.CVS,
+		PreURL:  "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers",
+		JobsURL: "https://cvshealth.wd1.myworkdayjobs.com/wday/cxs/cvshealth/CVS_Health_Careers/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "jobFamilyGroup": [
       "e65dbadf6a50100168ed7f2a693c0001",
@@ -21,4 +25,5 @@ var CVS = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

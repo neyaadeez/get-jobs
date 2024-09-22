@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var CCCIntelligentSolutions = common.WorkdayPayload{
-	CmpCode: common.CCCIntelligentSolutions,
-	PreURL:  "https://cccis.wd1.myworkdayjobs.com/en-US/broadbean_external",
-	JobsURL: "https://cccis.wd1.myworkdayjobs.com/wday/cxs/cccis/broadbean_external/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.CCCIntelligentSolutions, common.WorkdayPayload{
+		CmpCode: common.CCCIntelligentSolutions,
+		PreURL:  "https://cccis.wd1.myworkdayjobs.com/en-US/broadbean_external",
+		JobsURL: "https://cccis.wd1.myworkdayjobs.com/wday/cxs/cccis/broadbean_external/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "JobFamilyGroup": [
       "d2044f38ceca01914e44c60cbe017f95",
@@ -17,4 +21,5 @@ var CCCIntelligentSolutions = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

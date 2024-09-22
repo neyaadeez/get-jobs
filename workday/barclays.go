@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Barclays = common.WorkdayPayload{
-	CmpCode: common.Barclays,
-	PreURL:  "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays",
-	JobsURL: "https://barclays.wd3.myworkdayjobs.com/wday/cxs/barclays/External_Career_Site_Barclays/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Barclays, common.WorkdayPayload{
+		CmpCode: common.Barclays,
+		PreURL:  "https://barclays.wd3.myworkdayjobs.com/en-US/External_Career_Site_Barclays",
+		JobsURL: "https://barclays.wd3.myworkdayjobs.com/wday/cxs/barclays/External_Career_Site_Barclays/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "workerSubType": [
       "6139d325cdcc1001a72ce8fbe2290000",
@@ -27,4 +31,5 @@ var Barclays = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

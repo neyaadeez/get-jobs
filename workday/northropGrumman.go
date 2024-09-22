@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var NorthropGrumman = common.WorkdayPayload{
-	CmpCode: common.NorthropGrumman,
-	PreURL:  "https://ngc.wd1.myworkdayjobs.com/en-US/Northrop_Grumman_External_Site",
-	JobsURL: "https://ngc.wd1.myworkdayjobs.com/wday/cxs/ngc/Northrop_Grumman_External_Site/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.NorthropGrumman, common.WorkdayPayload{
+		CmpCode: common.NorthropGrumman,
+		PreURL:  "https://ngc.wd1.myworkdayjobs.com/en-US/Northrop_Grumman_External_Site",
+		JobsURL: "https://ngc.wd1.myworkdayjobs.com/wday/cxs/ngc/Northrop_Grumman_External_Site/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "jobFamilyGroup": [
       "a111b0a898f1018af8043a63e7007178",
@@ -17,4 +21,5 @@ var NorthropGrumman = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

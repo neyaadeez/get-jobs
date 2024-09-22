@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var ASML = common.WorkdayPayload{
-	CmpCode: common.ASML,
-	PreURL:  "https://asml.wd3.myworkdayjobs.com/en-US/ASMLEXT1",
-	JobsURL: "https://asml.wd3.myworkdayjobs.com/wday/cxs/asml/ASMLEXT1/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.ASML, common.WorkdayPayload{
+		CmpCode: common.ASML,
+		PreURL:  "https://asml.wd3.myworkdayjobs.com/en-US/ASMLEXT1",
+		JobsURL: "https://asml.wd3.myworkdayjobs.com/wday/cxs/asml/ASMLEXT1/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locations": [
       "4c9a1193e459100107474e5c2b090000",
@@ -41,4 +45,5 @@ var ASML = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

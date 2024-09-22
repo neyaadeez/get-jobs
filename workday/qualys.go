@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var Qualys = common.WorkdayPayload{
-	CmpCode: common.Qualys,
-	PreURL:  "https://qualys.wd5.myworkdayjobs.com/en-US/Careers",
-	JobsURL: "https://qualys.wd5.myworkdayjobs.com/wday/cxs/qualys/Careers/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.Qualys, common.WorkdayPayload{
+		CmpCode: common.Qualys,
+		PreURL:  "https://qualys.wd5.myworkdayjobs.com/en-US/Careers",
+		JobsURL: "https://qualys.wd5.myworkdayjobs.com/wday/cxs/qualys/Careers/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "locations": [
       "f92a9a956d98018ceda9b0f0f5cd6ecb",
@@ -49,4 +53,5 @@ var Qualys = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }

@@ -1,12 +1,16 @@
 package workday
 
-import "github.com/neyaadeez/go-get-jobs/common"
+import (
+	"github.com/neyaadeez/go-get-jobs/common"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
+)
 
-var CapitalOne = common.WorkdayPayload{
-	CmpCode: common.CapitalOne,
-	PreURL:  "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One",
-	JobsURL: "https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs",
-	PayLoad: `{
+func init() {
+	workdaymain.RegisterPayload(common.CapitalOne, common.WorkdayPayload{
+		CmpCode: common.CapitalOne,
+		PreURL:  "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One",
+		JobsURL: "https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs",
+		PayLoad: `{
   "appliedFacets": {
     "jobFamilyGroup": [
       "a12c70bf789e105802e9caf800542991",
@@ -17,4 +21,5 @@ var CapitalOne = common.WorkdayPayload{
   "offset": %d,
   "searchText": ""
 }`,
+	})
 }
