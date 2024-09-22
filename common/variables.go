@@ -61,6 +61,7 @@ func checkDuplicates() {
 		Phinia,
 		Nissan,
 		HP,
+		Barclays,
 	}
 
 	for _, value := range values {
@@ -96,4 +97,5 @@ var Companies = []string{
 	"Phinia",
 	"Nissan",
 	"HP",
+	"Barclays",
 }
