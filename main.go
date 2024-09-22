@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	resp, err := workdaymain.GetWorkdayJobs(workday.Twitter)
+	resp, err := workdaymain.GetWorkdayJobs(workday.Barclays)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

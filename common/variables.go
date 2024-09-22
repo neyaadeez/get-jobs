@@ -32,6 +32,7 @@ var (
 	Phinia                  = "PHNA"
 	Nissan                  = "NISN"
 	HP                      = "HPHP"
+	Barclays                = "BARC"
 )
 
 func checkDuplicates() {
