@@ -20,4 +20,13 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+	// workday.Init()
+	// resp, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads["BARC"])
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// 	return
+	// }
+
+	// fmt.Println(resp)
+	// fmt.Println(len(resp))
 }

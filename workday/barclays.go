@@ -12,6 +12,14 @@ func init() {
 		JobsURL: "https://barclays.wd3.myworkdayjobs.com/wday/cxs/barclays/External_Career_Site_Barclays/jobs",
 		PayLoad: `{
   "appliedFacets": {
+  "locations": [
+      "1ab48a98eb7c10016347430a3be10000",
+      "112c05428201100163762d1061590000",
+      "1ab48a98eb7c10016340ac23e4860000",
+      "1ab48a98eb7c100163410baf3ab70000",
+      "1ab48a98eb7c10016341772a6b7e0000",
+      "1ab48a98eb7c10016340c1c9feed0000"
+    ],
     "workerSubType": [
       "6139d325cdcc1001a72ce8fbe2290000",
       "6139d325cdcc1001a72ceb63d5d60000",
