@@ -72,3 +72,28 @@ func checkDuplicates() {
 		}
 	}
 }
+
+var Companies = []string{
+	"ASML",
+	"CrowdStrike",
+	"Intel",
+	"Nvidia",
+	"Qualys",
+	"SalesForce",
+	"Walmart",
+	"Target",
+	"Samsung",
+	"Disney",
+	"Sony",
+	"Twitter",
+	"CapitalOne",
+	"Boeing",
+	"Bose",
+	"Snapchat",
+	"CVS",
+	"CCCIntelligentSolutions",
+	"NorthropGrumman",
+	"Phinia",
+	"Nissan",
+	"HP",
+}
