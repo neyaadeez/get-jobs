@@ -72,7 +72,6 @@ func microsoftJobs(page int) ([]common.JobPosting, int, error) {
 	jobsPerPage := 20.0
 
 	page = int(math.Ceil(totalJobs / jobsPerPage))
-	fmt.Println("total microsoft jobs: ", jobsResponseMicrosoft.OperationResult.Result.TotalJobs)
 
 	var jobPostings []common.JobPosting
 	for _, job := range jobsResponseMicrosoft.OperationResult.Result.Jobs {
