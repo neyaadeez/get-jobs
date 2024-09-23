@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.CCCIntelligentSolutions, common.WorkdayPayload{
+		Company: "CCC Intelligent Solutions",
 		CmpCode: common.CCCIntelligentSolutions,
 		PreURL:  "https://cccis.wd1.myworkdayjobs.com/en-US/broadbean_external",
 		JobsURL: "https://cccis.wd1.myworkdayjobs.com/wday/cxs/cccis/broadbean_external/jobs",

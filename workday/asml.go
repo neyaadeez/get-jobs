@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.ASML, common.WorkdayPayload{
+    Company: "ASML",
 		CmpCode: common.ASML,
 		PreURL:  "https://asml.wd3.myworkdayjobs.com/en-US/ASMLEXT1",
 		JobsURL: "https://asml.wd3.myworkdayjobs.com/wday/cxs/asml/ASMLEXT1/jobs",

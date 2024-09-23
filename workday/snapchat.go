@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Snapchat, common.WorkdayPayload{
+		Company: "Snapchat",
 		CmpCode: common.Snapchat,
 		PreURL:  "https://wd1.myworkdaysite.com/en-US/recruiting/snapchat/snap",
 		JobsURL: "https://wd1.myworkdaysite.com/wday/cxs/snapchat/snap/jobs",

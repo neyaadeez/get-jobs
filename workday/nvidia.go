@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Nvidia, common.WorkdayPayload{
+		Company: "Nvidia",
 		CmpCode: common.Nvidia,
 		PreURL:  "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
 		JobsURL: "https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs",

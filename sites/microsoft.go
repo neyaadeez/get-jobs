@@ -81,6 +81,7 @@ func microsoftJobs(page int) ([]common.JobPosting, int, error) {
 			Location:     formatLocations(job.Properties.Locations),
 			PostedOn:     job.PostingDate,
 			ExternalPath: generateMicrosoftJobLink(job.JobID, job.Title),
+			Company:      "Microsoft",
 		}
 		jobPostings = append(jobPostings, jobPosting)
 	}

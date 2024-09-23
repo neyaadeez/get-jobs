@@ -87,6 +87,7 @@ func workdayJobs(workdayPayload common.WorkdayPayload, offset int) (*common.Jobs
 			jobsResponse.JobPostings[i].ExternalPath = workdayPayload.PreURL + job.ExternalPath
 			jobid := strings.Split(jobsResponse.JobPostings[i].ExternalPath, "_")
 			jobsResponse.JobPostings[i].JobId = workdayPayload.CmpCode + ":" + jobid[len(jobid)-1]
+			jobsResponse.JobPostings[i].Company = workdayPayload.Company
 		}
 
 		return &jobsResponse, nil

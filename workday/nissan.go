@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Nissan, common.WorkdayPayload{
+		Company: "Nissan",
 		CmpCode: common.Nissan,
 		PreURL:  "https://alliance.wd3.myworkdayjobs.com/en-US/nissanjobs",
 		JobsURL: "https://alliance.wd3.myworkdayjobs.com/wday/cxs/alliance/nissanjobs/jobs",

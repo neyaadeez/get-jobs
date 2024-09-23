@@ -2,7 +2,8 @@ package common
 
 // Job represents the structure to hold job listing data
 type JobPosting struct {
-	JobId        string
+	Company      string `json:"company,omitempty"`
+	JobId        string `json:"jobId"`
 	JobTitle     string `json:"title"`
 	Location     string `json:"locationsText,omitempty"`
 	PostedOn     string `json:"postedOn,omitempty"`
@@ -17,6 +18,7 @@ type JobsResponse struct {
 
 // WorkdayPayload
 type WorkdayPayload struct {
+	Company string
 	CmpCode string
 	PreURL  string
 	JobsURL string

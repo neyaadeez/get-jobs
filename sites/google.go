@@ -69,6 +69,7 @@ func parseJobPage(body []byte) ([]common.JobPosting, string, error) {
 			JobId:        common.Google + ":" + jobId,
 			JobTitle:     strings.ReplaceAll(ariaLabel, "Learn more about", ""),
 			ExternalPath: "https://www.google.com/about/careers/applications/" + href,
+			Company:      "Google",
 		})
 	})
 

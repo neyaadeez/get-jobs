@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Twitter, common.WorkdayPayload{
+		Company: "Twitter",
 		CmpCode: common.Twitter,
 		PreURL:  "https://twitter.wd5.myworkdayjobs.com/en-US/X",
 		JobsURL: "https://twitter.wd5.myworkdayjobs.com/wday/cxs/twitter/X/jobs",

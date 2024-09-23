@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Qualys, common.WorkdayPayload{
+		Company: "Qualys",
 		CmpCode: common.Qualys,
 		PreURL:  "https://qualys.wd5.myworkdayjobs.com/en-US/Careers",
 		JobsURL: "https://qualys.wd5.myworkdayjobs.com/wday/cxs/qualys/Careers/jobs",

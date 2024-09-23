@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.Disney, common.WorkdayPayload{
+		Company: "Disney",
 		CmpCode: common.Disney,
 		PreURL:  "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer",
 		JobsURL: "https://disney.wd5.myworkdayjobs.com/wday/cxs/disney/disneycareer/jobs",

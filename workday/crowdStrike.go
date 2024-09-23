@@ -7,6 +7,7 @@ import (
 
 func init() {
 	workdaymain.RegisterPayload(common.CrowdStrike, common.WorkdayPayload{
+		Company: "CrowdStrike",
 		CmpCode: common.CrowdStrike,
 		PreURL:  "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers",
 		JobsURL: "https://crowdstrike.wd5.myworkdayjobs.com/wday/cxs/crowdstrike/crowdstrikecareers/jobs",

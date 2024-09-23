@@ -80,6 +80,7 @@ func oracleJobs(offset int) ([]common.JobPosting, int, error) {
 			Location:     formatOracleLocations(job.PrimaryLocation, job.SecondaryLocations),
 			PostedOn:     job.PostedDate,
 			ExternalPath: "https://careers.oracle.com/jobs/#en/sites/jobsearch/job/" + job.Id,
+			Company:      "Oracle",
 		}
 		jobPostings = append(jobPostings, jobPosting)
 	}
