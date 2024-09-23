@@ -28,6 +28,15 @@ func ProcessJobsWithDB() error {
 
 	allJobs = append(allJobs, jobs...)
 
+	jobs, err = sites.GetMicrosoftJobs()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println("All Microsoft Jobs: ", len(jobs))
+
+	allJobs = append(allJobs, jobs...)
+
 	// process Jobs
 	jobs, err = processDublicateJobs(allJobs)
 	if err != nil {

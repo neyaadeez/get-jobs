@@ -15,7 +15,7 @@ func main() {
 	}
 
 	// workday.Init()
-	// resp, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads["BARC"])
+	// resp, err := sites.GetMicrosoftJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return

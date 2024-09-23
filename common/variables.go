@@ -11,7 +11,8 @@ func init() {
 
 // companies with own job portals
 var (
-	Google = "GOGL"
+	Google    = "GOGL"
+	Microsoft = "MISF"
 )
 
 // WorkDay companies list

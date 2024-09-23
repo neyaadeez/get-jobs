@@ -3,10 +3,10 @@ package sites
 import (
 	"encoding/json"
 	"fmt"
-	"log"
+	"math"
 	"net/url"
+	"strconv"
 	"strings"
-	"time"
 
 	"github.com/neyaadeez/go-get-jobs/common"
 )
@@ -25,34 +25,59 @@ type MicrosoftJob struct {
 type MicrosoftJobResponse struct {
 	OperationResult struct {
 		Result struct {
-			Jobs []MicrosoftJob `json:"jobs"`
+			TotalJobs int            `json:"totalJobs"`
+			Jobs      []MicrosoftJob `json:"jobs"`
 		} `json:"result"`
 	} `json:"operationResult"`
 }
 
-func GetMicrosoftJobs(days int, keyword string) (common.JobsResponse, error) {
+func GetMicrosoftJobs() ([]common.JobPosting, error) {
+	count := 1
+	jobsMicrosoft, count, err := microsoftJobs(count)
+	if err != nil {
+		fmt.Println("error processing microsoft jobs: ", err)
+		return jobsMicrosoft, err
+	}
+
+	for i := 2; i <= count; i++ {
+		job, _, err := microsoftJobs(i)
+		if err != nil {
+			fmt.Println("error processing microsoft jobs: ", err.Error())
+			continue
+		}
+
+		jobsMicrosoft = append(jobsMicrosoft, job...)
+	}
+
+	return jobsMicrosoft, nil
+}
+
+func microsoftJobs(page int) ([]common.JobPosting, int, error) {
 	client := common.GetClient()
 
-	url := formatURL("https://gcsservices.careers.microsoft.com/search/api/v1/search", keyword)
-
-	// := "https://gcsservices.careers.microsoft.com/search/api/v1/search?q=software&lc=United%20States&exp=Students%20and%20graduates&l=en_us&pg=1&pgSz=20&o=Recent&flt=true"
+	url := formatURL(strconv.Itoa(page), "https://gcsservices.careers.microsoft.com/search/api/v1/search")
 
 	resp, err := client.R().Get(url)
 	if err != nil {
-		return common.JobsResponse{}, fmt.Errorf("error accessing the URL: %v", err)
+		return nil, 0, fmt.Errorf("error accessing the URL: %v", err)
 	}
 
 	var jobsResponseMicrosoft MicrosoftJobResponse
 	err = json.Unmarshal(resp.Body(), &jobsResponseMicrosoft)
 	if err != nil {
-		return common.JobsResponse{}, fmt.Errorf("error parsing response: %v", err)
+		return nil, 0, fmt.Errorf("error parsing response: %v", err)
 	}
 
-	filteredJobs := filterMicrosoftJobsByDays(jobsResponseMicrosoft.OperationResult.Result.Jobs, days)
+	totalJobs := float64(jobsResponseMicrosoft.OperationResult.Result.TotalJobs)
+	jobsPerPage := 20.0
+
+	page = int(math.Ceil(totalJobs / jobsPerPage))
+	fmt.Println("total microsoft jobs: ", jobsResponseMicrosoft.OperationResult.Result.TotalJobs)
 
 	var jobPostings []common.JobPosting
-	for _, job := range filteredJobs {
+	for _, job := range jobsResponseMicrosoft.OperationResult.Result.Jobs {
 		jobPosting := common.JobPosting{
+			JobId:        common.Microsoft + ":" + job.JobID,
 			JobTitle:     job.Title,
 			Location:     formatLocations(job.Properties.Locations),
 			PostedOn:     job.PostingDate,
@@ -61,34 +86,7 @@ func GetMicrosoftJobs(days int, keyword string) (common.JobsResponse, error) {
 		jobPostings = append(jobPostings, jobPosting)
 	}
 
-	return common.JobsResponse{
-		JobPostings: jobPostings,
-		Total:       len(jobPostings),
-	}, nil
-}
-
-func filterMicrosoftJobsByDays(jobs []MicrosoftJob, days int) []MicrosoftJob {
-	var filteredJobs []MicrosoftJob
-
-	for _, job := range jobs {
-		daysSincePosted := parseMicrosoftPostedOn(job.PostingDate)
-		if daysSincePosted <= days {
-			filteredJobs = append(filteredJobs, job)
-		}
-	}
-
-	return filteredJobs
-}
-
-func parseMicrosoftPostedOn(postingDate string) int {
-	parsedTime, err := time.Parse(time.RFC3339, postingDate)
-	if err != nil {
-		log.Printf("Error parsing posting date: %v", err)
-		return 1000
-	}
-
-	duration := time.Since(parsedTime)
-	return int(duration.Hours() / 24)
+	return jobPostings, page, nil
 }
 
 func formatLocations(locations []string) string {
@@ -107,13 +105,12 @@ func generateMicrosoftJobLink(jobID, jobTitle string) string {
 	return fmt.Sprintf("%s/%s/%s", baseURL, jobID, encodedTitle)
 }
 
-func formatURL(baseURL, keyword string) string {
+func formatURL(page string, baseURL string) string {
 	queryParams := url.Values{}
-	queryParams.Set("q", keyword)
 	queryParams.Set("lc", "United States")
 	queryParams.Set("exp", "Students and graduates")
 	queryParams.Set("l", "en_us")
-	queryParams.Set("pg", "1")
+	queryParams.Set("pg", page)
 	queryParams.Set("pgSz", "20")
 	queryParams.Set("o", "Recent")
 	queryParams.Set("flt", "true")
