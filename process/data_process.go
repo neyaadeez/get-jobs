@@ -14,7 +14,6 @@ func ProcessJobsWithDB() error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
 	fmt.Println("All Workday Jobs: ", len(jobs))
 
 	allJobs = append(allJobs, jobs...)
@@ -23,7 +22,6 @@ func ProcessJobsWithDB() error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
 	fmt.Println("All Google Jobs: ", len(jobs))
 
 	allJobs = append(allJobs, jobs...)
@@ -32,8 +30,15 @@ func ProcessJobsWithDB() error {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
 	fmt.Println("All Microsoft Jobs: ", len(jobs))
+
+	allJobs = append(allJobs, jobs...)
+
+	jobs, err = sites.GetOracleJobs()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println("All Oracle Jobs: ", len(jobs))
 
 	allJobs = append(allJobs, jobs...)
 

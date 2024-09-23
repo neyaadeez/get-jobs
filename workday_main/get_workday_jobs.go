@@ -3,7 +3,6 @@ package workdaymain
 import (
 	"encoding/json"
 	"fmt"
-	"math"
 	"strings"
 	"sync"
 	"time"
@@ -24,10 +23,7 @@ func GetWorkdayJobs(workdayPayload common.WorkdayPayload) ([]common.JobPosting, 
 
 	jobPostings = append(jobPostings, resp.JobPostings...)
 
-	totalJobs := float64(resp.Total)
-	jobsPerPage := 20.0
-
-	loop := int(math.Ceil(totalJobs / jobsPerPage))
+	loop := int(resp.Total / 20)
 	for i := 1; i <= loop; i++ {
 		wg.Add(1)
 
