@@ -25,6 +25,7 @@ func InsertIntoDB(jobPostings []common.JobPosting) error {
 func InsertNewJobPostings(collection *mongo.Collection, jobPostings []common.JobPosting) error {
 	for _, job := range jobPostings {
 		doc := bson.M{
+			"company":       job.Company,
 			"jobId":         job.JobId,
 			"title":         job.JobTitle,
 			"locationsText": job.Location,
@@ -44,5 +45,45 @@ func InsertNewJobPostings(collection *mongo.Collection, jobPostings []common.Job
 		}
 	}
 
+	return nil
+}
+
+func DeleteJobsFromDB(jobPostings []common.JobPosting) error {
+	client := GetDBClient()
+	if client == nil {
+		return fmt.Errorf("error: unable to get db client connection")
+	}
+
+	database := client.Database("jobsDB")
+	collection := database.Collection("jobsCollection")
+
+	var err error
+	for _, job := range jobPostings {
+		er := deleteJobById(collection, job.JobId)
+		if er != nil {
+			err = er
+		}
+	}
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func deleteJobById(collection *mongo.Collection, jobId string) error {
+	filter := bson.M{"jobId": jobId}
+
+	result, err := collection.DeleteOne(context.TODO(), filter)
+	if err != nil {
+		return fmt.Errorf("error while deleting job from db: %v", err)
+	}
+
+	if result.DeletedCount == 0 {
+		return fmt.Errorf("no job found with jobId: %s", jobId)
+	}
+
+	fmt.Printf("Successfully deleted job with jobId: %s\n", jobId)
 	return nil
 }
