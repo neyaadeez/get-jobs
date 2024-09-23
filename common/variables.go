@@ -9,6 +9,12 @@ func init() {
 	checkDuplicates()
 }
 
+// companies with own job portals
+var (
+	Google = "GOGL"
+)
+
+// WorkDay companies list
 var (
 	ASML                    = "ASML"
 	CrowdStrike             = "CRWD"
