@@ -36,40 +36,49 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 	onceGetJobs.Do(func() {
 		var allJobs []common.JobPosting
 
-		jobs, err := GetAllWorkdayJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-			return
-		}
-		fmt.Println("All Workday Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
+		// jobs, err := GetAllWorkdayJobs()
+		// if err != nil {
+		// 	fmt.Println(err.Error())
+		// 	cachedError = err
+		// 	return
+		// }
+		// fmt.Println("All Workday Jobs: ", len(jobs))
+		// allJobs = append(allJobs, jobs...)
 
-		jobs, err = sites.GetGoogleJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-			return
-		}
-		fmt.Println("All Google Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
+		// jobs, err = sites.GetGoogleJobs()
+		// if err != nil {
+		// 	fmt.Println(err.Error())
+		// 	cachedError = err
+		// 	return
+		// }
+		// fmt.Println("All Google Jobs: ", len(jobs))
+		// allJobs = append(allJobs, jobs...)
 
-		jobs, err = sites.GetMicrosoftJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-			return
-		}
-		fmt.Println("All Microsoft Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
+		// jobs, err = sites.GetMicrosoftJobs()
+		// if err != nil {
+		// 	fmt.Println(err.Error())
+		// 	cachedError = err
+		// 	return
+		// }
+		// fmt.Println("All Microsoft Jobs: ", len(jobs))
+		// allJobs = append(allJobs, jobs...)
 
-		jobs, err = sites.GetOracleJobs()
+		// jobs, err = sites.GetOracleJobs()
+		// if err != nil {
+		// 	fmt.Println(err.Error())
+		// 	cachedError = err
+		// 	return
+		// }
+		// fmt.Println("All Oracle Jobs: ", len(jobs))
+		// allJobs = append(allJobs, jobs...)
+
+		jobs, err := sites.GetAppleJobs()
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
 			return
 		}
-		fmt.Println("All Oracle Jobs: ", len(jobs))
+		fmt.Println("All Apple Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)

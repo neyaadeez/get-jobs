@@ -3,26 +3,24 @@ package main
 import (
 	"fmt"
 
-	"github.com/neyaadeez/go-get-jobs/common"
+	"github.com/neyaadeez/go-get-jobs/process"
 )
 
 func main() {
 
-	fmt.Println(common.Companies)
-	fmt.Println(common.WorkdayCompanies)
-	// err := process.ProcessJobsWithDB()
-	// if err != nil {
-	// 	fmt.Println(err.Error())
-	// 	return
-	// }
+	err := process.ProcessJobsWithDB()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
 
 	// err = readme.ReadMeProcessNewJobs()
 	// if err != nil {
 	// 	fmt.Println("error while processing readme file with new jobs: ")
 	// }
 
-	// // workday.Init()
-	// resp, err := sites.GetOracleJobs()
+	// workday.Init()
+	// resp, err := sites.GetAppleJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
