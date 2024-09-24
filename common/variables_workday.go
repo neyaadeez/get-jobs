@@ -5,10 +5,6 @@ import (
 	"os"
 )
 
-func init() {
-	checkDuplicatesWorkday()
-}
-
 // WorkDay companies list
 var (
 	ASML                    = "ASML"
@@ -38,7 +34,7 @@ var (
 
 var WorkdayCompanies = make(map[string]bool)
 
-func checkDuplicatesWorkday() {
+func checkAndInitWorkdayCompaniesList() {
 	values := []string{
 		ASML,
 		CrowdStrike,
@@ -66,11 +62,12 @@ func checkDuplicatesWorkday() {
 	}
 
 	for _, value := range values {
-		if WorkdayCompanies[value] {
+		if WorkdayCompanies[value] || Companies[value] {
 			fmt.Printf("Duplicate company code found: %s\n", value)
 			os.Exit(1)
 		} else {
 			WorkdayCompanies[value] = true
+			Companies[value] = true
 		}
 	}
 }

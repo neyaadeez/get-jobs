@@ -5,10 +5,6 @@ import (
 	"os"
 )
 
-func init() {
-	checkDuplicatesComapnies()
-}
-
 // companies with own job portals
 var (
 	Google    = "GOGL"

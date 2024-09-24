@@ -17,3 +17,8 @@ func GetClient() *resty.Client {
 	})
 	return clientO
 }
+
+func init() {
+	checkDuplicatesComapnies()
+	checkAndInitWorkdayCompaniesList()
+}
