@@ -2,54 +2,26 @@ package process
 
 import (
 	"fmt"
+	"sync"
 
 	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/database"
 	"github.com/neyaadeez/go-get-jobs/sites"
 )
 
+var (
+	cachedJobs  []common.JobPosting
+	cachedError error
+	onceGetJobs sync.Once
+)
+
 func ProcessJobsWithDB() error {
-	var allJobs []common.JobPosting
-	jobs, err := GetAllWorkdayJobs()
+	jobs, err := GetProcessedNewJobs()
 	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("All Workday Jobs: ", len(jobs))
-
-	allJobs = append(allJobs, jobs...)
-
-	jobs, err = sites.GetGoogleJobs()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("All Google Jobs: ", len(jobs))
-
-	allJobs = append(allJobs, jobs...)
-
-	jobs, err = sites.GetMicrosoftJobs()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("All Microsoft Jobs: ", len(jobs))
-
-	allJobs = append(allJobs, jobs...)
-
-	jobs, err = sites.GetOracleJobs()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("All Oracle Jobs: ", len(jobs))
-
-	allJobs = append(allJobs, jobs...)
-
-	// process Jobs
-	jobs, err = processDublicateJobs(allJobs)
-	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println("error while processing new jobs: ", err.Error())
 		return err
 	}
-
-	fmt.Println("Processed Jobs(New Jobs): ", len(jobs))
+	fmt.Println("Processed Jobs (New Jobs): ", len(jobs))
 
 	err = database.InsertIntoDB(jobs)
 	if err != nil {
@@ -58,4 +30,53 @@ func ProcessJobsWithDB() error {
 	}
 
 	return nil
+}
+
+func GetProcessedNewJobs() ([]common.JobPosting, error) {
+	onceGetJobs.Do(func() {
+		var allJobs []common.JobPosting
+
+		jobs, err := GetAllWorkdayJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println("All Workday Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
+		jobs, err = sites.GetGoogleJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println("All Google Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
+		jobs, err = sites.GetMicrosoftJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println("All Microsoft Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
+		jobs, err = sites.GetOracleJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println("All Oracle Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
+		cachedJobs, cachedError = processDublicateJobs(allJobs)
+		if cachedError != nil {
+			fmt.Println(cachedError.Error())
+		}
+	})
+
+	return cachedJobs, cachedError
 }
