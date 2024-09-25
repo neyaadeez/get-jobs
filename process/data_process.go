@@ -123,14 +123,14 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 		// fmt.Println("All Apple Jobs: ", len(jobs))
 		// allJobs = append(allJobs, jobs...)
 
-		jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Medtronic])
+		jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Tancent])
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
 			return
 		}
 		fmt.Println(jobs[0])
-		fmt.Println("All Medtronic Jobs: ", len(jobs))
+		fmt.Println("All Tancent Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
