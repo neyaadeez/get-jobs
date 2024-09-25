@@ -25,7 +25,7 @@ func main() {
 	process.ProcessJobsWithDBForNewlyAddedJobPortal()
 
 	// workday.Init()
-	// resp, err := sites.GetAppleJobs()
+	// resp, err := sites.GetMetaJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
