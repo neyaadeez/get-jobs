@@ -7,6 +7,8 @@ import (
 	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/database"
 	"github.com/neyaadeez/go-get-jobs/sites"
+	"github.com/neyaadeez/go-get-jobs/workday"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
 )
 
 var (
@@ -91,6 +93,7 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 }
 
 func ProcessJobsWithDBForNewlyAddedJobPortal() error {
+	workday.Init()
 	jobs, err := getProcessedNewJobsNewlyAddedJobPortal()
 	if err != nil {
 		fmt.Println("error while processing new jobs: ", err.Error())
@@ -119,6 +122,16 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 		// }
 		// fmt.Println("All Apple Jobs: ", len(jobs))
 		// allJobs = append(allJobs, jobs...)
+
+		jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Blueorigin])
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println(jobs[0])
+		fmt.Println("All Blueorigin Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
