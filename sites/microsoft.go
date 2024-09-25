@@ -32,6 +32,7 @@ type MicrosoftJobResponse struct {
 }
 
 func GetMicrosoftJobs() ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", "Microsoft")
 	count := 1
 	jobsMicrosoft, count, err := microsoftJobs(count)
 	if err != nil {

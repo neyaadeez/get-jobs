@@ -11,6 +11,7 @@ import (
 )
 
 func GetGoogleJobs() ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", "Google")
 	client := common.GetClient()
 
 	url := "https://careers.google.com/jobs/results/?location=United%20States&target_level=EARLY&target_level=INTERN_AND_APPRENTICE&sort_by=date"

@@ -29,6 +29,7 @@ type OracleJobResponse struct {
 }
 
 func GetOracleJobs() ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", "Oracle")
 	count := 0
 	jobsOracle, count, err := oracleJobs(count)
 	if err != nil {

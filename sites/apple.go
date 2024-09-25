@@ -11,6 +11,7 @@ import (
 )
 
 func GetAppleJobs() ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", "Apple")
 	var jobPostings []common.JobPosting
 	totalPages := 15
 

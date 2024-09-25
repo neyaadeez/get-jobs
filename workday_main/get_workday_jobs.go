@@ -11,6 +11,7 @@ import (
 )
 
 func GetWorkdayJobs(workdayPayload common.WorkdayPayload) ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", workdayPayload.Company)
 	var wg sync.WaitGroup
 	var mu sync.Mutex
 	errChan := make(chan error, 1)
