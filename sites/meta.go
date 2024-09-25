@@ -53,7 +53,7 @@ func metaJobs() ([]common.JobPosting, error) {
 
 	formData := url.Values{}
 	formData.Set("lsd", lsdTkn)
-	formData.Set("variables", `{"search_input":{"q":"","divisions":[],"offices":[],"roles":[],"leadership_levels":["Individual Contributor"],"saved_jobs":[],"saved_searches":[],"sub_teams":[],"teams":[],"is_leadership":false,"is_remote_only":false,"sort_by_new":true,"page":1,"results_per_page":null}}`)
+	formData.Set("variables", `{"search_input":{"q":"","divisions":[],"offices":["North America"],"roles":[],"leadership_levels":["Individual Contributor"],"saved_jobs":[],"saved_searches":[],"sub_teams":[],"teams":[],"is_leadership":false,"is_remote_only":false,"sort_by_new":true,"page":1,"results_per_page":null}}`)
 	formData.Set("doc_id", "9114524511922157")
 
 	req, err := http.NewRequest("POST", apiUrl, bytes.NewBufferString(formData.Encode()))

@@ -128,7 +128,7 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 			cachedError = err
 			return
 		}
-		fmt.Println("All Apple Jobs: ", len(jobs))
+		fmt.Println("All Meta Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		// jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Tancent])
