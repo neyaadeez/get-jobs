@@ -82,6 +82,15 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		fmt.Println("All Apple Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
+		jobs, err = sites.GetMetaJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			//return
+		}
+		fmt.Println("All Meta Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
 			fmt.Println(cachedError.Error())
