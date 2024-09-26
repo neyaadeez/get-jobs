@@ -21,16 +21,16 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	processTodaysJobsDBAndReadme()
-	// process.ProcessJobsWithDBForNewlyAddedJobPortal()
+	//processTodaysJobsDBAndReadme()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal()
 
 	// workday.Init()
-	// resp, err := sites.GetMetaJobs()
+	// resp, err := sites.GetTeslaJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
 	// }
 
-	// fmt.Println(resp)
+	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
 }

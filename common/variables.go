@@ -12,6 +12,7 @@ var (
 	Oracle    = "ORCL"
 	Apple     = "APLE"
 	Meta      = "META"
+	Tesla     = "TSLA"
 )
 
 var Companies = make(map[string]bool)
@@ -23,6 +24,7 @@ func checkDuplicatesComapnies() {
 		Oracle,
 		Apple,
 		Meta,
+		Tesla,
 	}
 
 	for _, value := range values {

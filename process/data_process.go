@@ -41,7 +41,6 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			return
 		}
 		fmt.Println("All Workday Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
@@ -50,7 +49,6 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			return
 		}
 		fmt.Println("All Google Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
@@ -59,7 +57,6 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			return
 		}
 		fmt.Println("All Microsoft Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
@@ -68,7 +65,6 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			return
 		}
 		fmt.Println("All Oracle Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
@@ -77,7 +73,6 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			return
 		}
 		fmt.Println("All Apple Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
@@ -86,9 +81,16 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
-			//return
 		}
 		fmt.Println("All Meta Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
+		jobs, err = sites.GetTeslaJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+		}
+		fmt.Println("All Tesla Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
@@ -122,13 +124,13 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 	onceGetJobs.Do(func() {
 		var allJobs []common.JobPosting
 
-		jobs, err := sites.GetMetaJobs()
+		jobs, err := sites.GetTeslaJobs()
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
 			return
 		}
-		fmt.Println("All Meta Jobs: ", len(jobs))
+		fmt.Println("All tesla Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		// jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Tancent])
