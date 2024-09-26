@@ -13,6 +13,8 @@ Feel free to explore!
 
 | Company | Job Title | Location | Link | Date Posted |
 | --- | --- | --- | :---: | :---: |
+| **Medtronic** |  |  | <a href="https://medtronic.wd1.myworkdayjobs.com/en-US/MedtronicCareers" target="_blank"><img src="https://i.imgur.com/u1KNU8z.png" width="118" alt="Apply"></a> | Sep 25 |
+| **Walmart** | Principal, Product Manager - Payments (Data Science / Machine Learning) | 2 Locations | <a href="https://walmart.wd5.myworkdayjobs.com/en-US/WalmartExternal/job/Sunnyvale-CA/Principal--Product-Manager---Payments--Data-Science---Machine-Learning-_R-2001601-1" target="_blank"><img src="https://i.imgur.com/u1KNU8z.png" width="118" alt="Apply"></a> | Sep 25 |
 | **HP** | HyperX Product Manager | Fountain Valley, California, United States of America | <a href="https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Fountain-Valley-California-United-States-of-America/HyperX-Product-Manager_UNI1218-2" target="_blank"><img src="https://i.imgur.com/u1KNU8z.png" width="118" alt="Apply"></a> | Sep 25 |
 | **HP** | Cash Hercules Supply Chain Finance Program Lead | Spring, Texas, United States of America | <a href="https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/Spring-Texas-United-States-of-America/Cash-Hercules-Supply-Chain-Finance-Program-Lead_3141531-1" target="_blank"><img src="https://i.imgur.com/u1KNU8z.png" width="118" alt="Apply"></a> | Sep 25 |
 | **HP** | Partner Sales Rep II | All Cities, Texas, United States of America | <a href="https://hp.wd5.myworkdayjobs.com/en-US/ExternalCareerSite/job/All-Cities-Texas-United-States-of-America/Partner-Sales-Rep-II_3142297-1" target="_blank"><img src="https://i.imgur.com/u1KNU8z.png" width="118" alt="Apply"></a> | Sep 25 |
