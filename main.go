@@ -23,10 +23,10 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Uber, false)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Databricks, false)
 
 	// workday.Init()
-	// resp, err := sites.GetSplunkJobs()
+	// resp, err := sites.GetDatabricksJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return

@@ -7,16 +7,17 @@ import (
 
 // companies with own job portals
 var (
-	Google    = "GOGL"
-	Microsoft = "MISF"
-	Oracle    = "ORCL"
-	Apple     = "APLE"
-	Meta      = "META"
-	Tesla     = "TSLA"
-	Chime     = "CHME"
-	Splunk    = "SPNK"
-	Visa      = "VISA"
-	Uber      = "UBER"
+	Google     = "GOGL"
+	Microsoft  = "MISF"
+	Oracle     = "ORCL"
+	Apple      = "APLE"
+	Meta       = "META"
+	Tesla      = "TSLA"
+	Chime      = "CHME"
+	Splunk     = "SPNK"
+	Visa       = "VISA"
+	Uber       = "UBER"
+	Databricks = "DTBS"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -34,6 +35,7 @@ func checkDuplicatesComapnies() {
 		Splunk,
 		Visa,
 		Uber,
+		Databricks,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {
