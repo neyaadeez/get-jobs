@@ -26,6 +26,8 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetChimeJobs()
 	case common.Splunk:
 		return sites.GetSplunkJobs()
+	case common.Visa:
+		return sites.GetVisaJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
 	} //////////////////////// Edit here

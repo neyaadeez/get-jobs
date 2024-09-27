@@ -23,7 +23,7 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Splunk, false)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Visa, false)
 
 	// workday.Init()
 	// resp, err := sites.GetSplunkJobs()

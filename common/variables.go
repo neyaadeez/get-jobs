@@ -15,6 +15,7 @@ var (
 	Tesla     = "TSLA"
 	Chime     = "CHME"
 	Splunk    = "SPNK"
+	Visa      = "VISA"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -30,6 +31,7 @@ func checkDuplicatesComapnies() {
 		Meta,
 		Tesla,
 		Splunk,
+		Visa,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {
