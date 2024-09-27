@@ -34,7 +34,7 @@ var (
 	Medtronic               = "MDTC"
 	Tancent                 = "TNCT"
 	Mantech                 = "MTCH"
-)
+) //////////////// Edit here
 
 var WorkdayCompanies = make(map[string]bool)
 
@@ -67,7 +67,7 @@ func checkAndInitWorkdayCompaniesList() {
 		Medtronic,
 		Tancent,
 		Mantech,
-	}
+	} /////////////////// Edit here
 
 	for _, value := range values {
 		if WorkdayCompanies[value] || AllCompanies[value] {

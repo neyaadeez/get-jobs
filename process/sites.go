@@ -28,5 +28,5 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetSplunkJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
-	}
+	} //////////////////////// Edit here
 }
