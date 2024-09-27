@@ -14,9 +14,12 @@ var (
 	Meta      = "META"
 	Tesla     = "TSLA"
 	Chime     = "CHME"
+	Splunk    = "SPNK"
 )
 
-var Companies = make(map[string]bool)
+var AllCompanies = make(map[string]bool)
+
+var SitesCompanies = make(map[string]bool)
 
 func checkDuplicatesComapnies() {
 	values := []string{
@@ -26,14 +29,16 @@ func checkDuplicatesComapnies() {
 		Apple,
 		Meta,
 		Tesla,
+		Splunk,
 	}
 
 	for _, value := range values {
-		if Companies[value] {
+		if AllCompanies[value] || SitesCompanies[value] {
 			fmt.Printf("Duplicate company code found: %s\n", value)
 			os.Exit(1)
 		} else {
-			Companies[value] = true
+			AllCompanies[value] = true
+			SitesCompanies[value] = true
 		}
 	}
 }

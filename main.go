@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/process"
 	"github.com/neyaadeez/go-get-jobs/readme"
 )
@@ -21,11 +22,11 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	processTodaysJobsDBAndReadme()
-	//process.ProcessJobsWithDBForNewlyAddedJobPortal()
+	//processTodaysJobsDBAndReadme()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Splunk, false)
 
 	// workday.Init()
-	// resp, err := sites.GetChimeJobs()
+	// resp, err := sites.GetSplunkJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return

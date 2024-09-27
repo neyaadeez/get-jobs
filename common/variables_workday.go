@@ -70,12 +70,12 @@ func checkAndInitWorkdayCompaniesList() {
 	}
 
 	for _, value := range values {
-		if WorkdayCompanies[value] || Companies[value] {
+		if WorkdayCompanies[value] || AllCompanies[value] {
 			fmt.Printf("Duplicate company code found: %s\n", value)
 			os.Exit(1)
 		} else {
 			WorkdayCompanies[value] = true
-			Companies[value] = true
+			AllCompanies[value] = true
 		}
 	}
 }

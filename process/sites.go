@@ -1,0 +1,32 @@
+package process
+
+import (
+	"fmt"
+
+	"github.com/neyaadeez/go-get-jobs/common"
+	"github.com/neyaadeez/go-get-jobs/sites"
+)
+
+// New function to fetch jobs based on company name
+func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
+	switch company {
+	case common.Google:
+		return sites.GetGoogleJobs()
+	case common.Microsoft:
+		return sites.GetMicrosoftJobs()
+	case common.Oracle:
+		return sites.GetOracleJobs()
+	case common.Apple:
+		return sites.GetAppleJobs()
+	case common.Meta:
+		return sites.GetMetaJobs()
+	case common.Tesla:
+		return sites.GetTeslaJobs()
+	case common.Chime:
+		return sites.GetChimeJobs()
+	case common.Splunk:
+		return sites.GetSplunkJobs()
+	default:
+		return nil, fmt.Errorf("unknown company: %s", company)
+	}
+}

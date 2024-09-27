@@ -6,7 +6,6 @@ import (
 
 	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/database"
-	"github.com/neyaadeez/go-get-jobs/sites"
 	"github.com/neyaadeez/go-get-jobs/workday"
 	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
 )
@@ -46,61 +45,15 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		fmt.Println("All Workday Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
-		jobs, err = sites.GetGoogleJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
+		for company := range common.SitesCompanies {
+			jobs, err := FetchJobsByCompany(company)
+			if err != nil {
+				fmt.Println(err.Error())
+				cachedError = err
+			}
+			fmt.Printf("All %s Jobs: %d\n", company, len(jobs))
+			allJobs = append(allJobs, jobs...)
 		}
-		fmt.Println("All Google Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetMicrosoftJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Microsoft Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetOracleJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Oracle Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetAppleJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Apple Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetMetaJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Meta Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetTeslaJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Tesla Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		jobs, err = sites.GetChimeJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-		}
-		fmt.Println("All Chime Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
@@ -111,9 +64,9 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 	return cachedJobs, cachedError
 }
 
-func ProcessJobsWithDBForNewlyAddedJobPortal() error {
+func ProcessJobsWithDBForNewlyAddedJobPortal(company string, w bool) error {
 	workday.Init()
-	jobs, err := getProcessedNewJobsNewlyAddedJobPortal()
+	jobs, err := getProcessedNewJobsNewlyAddedJobPortal(company, w)
 	if err != nil {
 		fmt.Println("error while processing new jobs: ", err.Error())
 		return err
@@ -129,28 +82,31 @@ func ProcessJobsWithDBForNewlyAddedJobPortal() error {
 	return nil
 }
 
-func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
+func getProcessedNewJobsNewlyAddedJobPortal(company string, w bool) ([]common.JobPosting, error) {
 	onceGetJobs.Do(func() {
 		var allJobs []common.JobPosting
 
-		// jobs, err := sites.GetChimeJobs()
-		// if err != nil {
-		// 	fmt.Println(err.Error())
-		// 	cachedError = err
-		// 	return
-		// }
-		// fmt.Println("All chime Jobs: ", len(jobs))
-		// allJobs = append(allJobs, jobs...)
+		if w {
+			jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[company])
+			if err != nil {
+				fmt.Println(err.Error())
+				cachedError = err
+				return
+			}
+			fmt.Println(jobs[0])
+			fmt.Println("All "+company+" Jobs: ", len(jobs))
+			allJobs = append(allJobs, jobs...)
 
-		jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Mantech])
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-			return
+		} else {
+			jobs, err := FetchJobsByCompany(company)
+			if err != nil {
+				fmt.Println(err.Error())
+				cachedError = err
+				return
+			}
+			fmt.Println("All "+company+" Jobs: ", len(jobs))
+			allJobs = append(allJobs, jobs...)
 		}
-		fmt.Println(jobs[0])
-		fmt.Println("All Tancent Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
