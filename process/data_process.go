@@ -8,6 +8,7 @@ import (
 	"github.com/neyaadeez/go-get-jobs/database"
 	"github.com/neyaadeez/go-get-jobs/sites"
 	"github.com/neyaadeez/go-get-jobs/workday"
+	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
 )
 
 var (
@@ -124,24 +125,24 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 	onceGetJobs.Do(func() {
 		var allJobs []common.JobPosting
 
-		jobs, err := sites.GetChimeJobs()
-		if err != nil {
-			fmt.Println(err.Error())
-			cachedError = err
-			return
-		}
-		fmt.Println("All chime Jobs: ", len(jobs))
-		allJobs = append(allJobs, jobs...)
-
-		// jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Tancent])
+		// jobs, err := sites.GetChimeJobs()
 		// if err != nil {
 		// 	fmt.Println(err.Error())
 		// 	cachedError = err
 		// 	return
 		// }
-		// fmt.Println(jobs[0])
-		// fmt.Println("All Tancent Jobs: ", len(jobs))
+		// fmt.Println("All chime Jobs: ", len(jobs))
 		// allJobs = append(allJobs, jobs...)
+
+		jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Mantech])
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+			return
+		}
+		fmt.Println(jobs[0])
+		fmt.Println("All Tancent Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
 
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {

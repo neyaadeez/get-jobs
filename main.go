@@ -22,7 +22,7 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	//process.ProcessJobsWithDBForNewlyAddedJobPortal()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal()
 
 	// workday.Init()
 	// resp, err := sites.GetChimeJobs()
