@@ -13,6 +13,7 @@ var (
 	Apple     = "APLE"
 	Meta      = "META"
 	Tesla     = "TSLA"
+	Chime     = "CHME"
 )
 
 var Companies = make(map[string]bool)

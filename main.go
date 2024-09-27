@@ -22,10 +22,10 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal()
+	//process.ProcessJobsWithDBForNewlyAddedJobPortal()
 
 	// workday.Init()
-	// resp, err := sites.GetTeslaJobs()
+	// resp, err := sites.GetChimeJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
@@ -33,4 +33,5 @@ func main() {
 
 	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
+
 }

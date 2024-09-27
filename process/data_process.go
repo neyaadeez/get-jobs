@@ -124,13 +124,13 @@ func getProcessedNewJobsNewlyAddedJobPortal() ([]common.JobPosting, error) {
 	onceGetJobs.Do(func() {
 		var allJobs []common.JobPosting
 
-		jobs, err := sites.GetTeslaJobs()
+		jobs, err := sites.GetChimeJobs()
 		if err != nil {
 			fmt.Println(err.Error())
 			cachedError = err
 			return
 		}
-		fmt.Println("All tesla Jobs: ", len(jobs))
+		fmt.Println("All chime Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
 		// jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Tancent])
