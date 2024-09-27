@@ -109,6 +109,7 @@ func getProcessedNewJobsNewlyAddedJobPortal(company string, w bool) ([]common.Jo
 			allJobs = append(allJobs, jobs...)
 		}
 
+		fmt.Println(allJobs[0])
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
 			fmt.Println(cachedError.Error())
