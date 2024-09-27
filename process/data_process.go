@@ -6,6 +6,7 @@ import (
 
 	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/database"
+	sitesmain "github.com/neyaadeez/go-get-jobs/sites_main"
 	"github.com/neyaadeez/go-get-jobs/workday"
 	workdaymain "github.com/neyaadeez/go-get-jobs/workday_main"
 )
@@ -46,7 +47,7 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		allJobs = append(allJobs, jobs...)
 
 		for company := range common.SitesCompanies {
-			jobs, err := FetchJobsByCompany(company)
+			jobs, err := sitesmain.FetchJobsByCompany(company)
 			if err != nil {
 				fmt.Println(err.Error())
 				cachedError = err
@@ -98,7 +99,7 @@ func getProcessedNewJobsNewlyAddedJobPortal(company string, w bool) ([]common.Jo
 			allJobs = append(allJobs, jobs...)
 
 		} else {
-			jobs, err := FetchJobsByCompany(company)
+			jobs, err := sitesmain.FetchJobsByCompany(company)
 			if err != nil {
 				fmt.Println(err.Error())
 				cachedError = err
