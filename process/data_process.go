@@ -94,6 +94,14 @@ func GetProcessedNewJobs() ([]common.JobPosting, error) {
 		fmt.Println("All Tesla Jobs: ", len(jobs))
 		allJobs = append(allJobs, jobs...)
 
+		jobs, err = sites.GetChimeJobs()
+		if err != nil {
+			fmt.Println(err.Error())
+			cachedError = err
+		}
+		fmt.Println("All Chime Jobs: ", len(jobs))
+		allJobs = append(allJobs, jobs...)
+
 		cachedJobs, cachedError = processDublicateJobs(allJobs)
 		if cachedError != nil {
 			fmt.Println(cachedError.Error())

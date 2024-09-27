@@ -21,8 +21,8 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal()
+	processTodaysJobsDBAndReadme()
+	//process.ProcessJobsWithDBForNewlyAddedJobPortal()
 
 	// workday.Init()
 	// resp, err := sites.GetChimeJobs()
