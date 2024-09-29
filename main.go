@@ -34,4 +34,12 @@ func main() {
 	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
 
+	// jobs, err := workdaymain.GetWorkdayJobs(workdaymain.WorkdayPayloads[common.Walmart])
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// 	return
+	// }
+	// fmt.Println(jobs[0])
+	// fmt.Println("All Jobs: ", len(jobs))
+
 }
