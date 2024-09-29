@@ -32,6 +32,7 @@ func checkDuplicatesComapnies() {
 		Apple,
 		Meta,
 		Tesla,
+		Chime,
 		Splunk,
 		Visa,
 		Uber,
