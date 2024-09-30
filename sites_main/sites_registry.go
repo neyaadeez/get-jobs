@@ -34,6 +34,8 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetDatabricksJobs()
 	case common.Amazon:
 		return sites.GetAmazonJobs()
+	case common.Amex:
+		return sites.GetAmexJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
 	} //////////////////////// Edit here

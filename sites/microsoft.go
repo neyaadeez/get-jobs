@@ -56,7 +56,7 @@ func GetMicrosoftJobs() ([]common.JobPosting, error) {
 func microsoftJobs(page int) ([]common.JobPosting, int, error) {
 	client := common.GetClient()
 
-	url := formatURL(strconv.Itoa(page), "https://gcsservices.careers.microsoft.com/search/api/v1/search")
+	url := formatMicrosoftURL(strconv.Itoa(page), "https://gcsservices.careers.microsoft.com/search/api/v1/search")
 
 	resp, err := client.R().Get(url)
 	if err != nil {
@@ -106,9 +106,9 @@ func generateMicrosoftJobLink(jobID, jobTitle string) string {
 	return fmt.Sprintf("%s/%s/%s", baseURL, jobID, encodedTitle)
 }
 
-func formatURL(page string, baseURL string) string {
+func formatMicrosoftURL(page string, baseURL string) string {
 	queryParams := url.Values{}
-	queryParams.Set("lc", "United States")
+	queryParams.Set("domain", "United States")
 	queryParams.Set("exp", "Students and graduates")
 	queryParams.Set("l", "en_us")
 	queryParams.Set("pg", page)

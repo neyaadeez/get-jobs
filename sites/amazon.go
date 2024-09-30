@@ -16,6 +16,7 @@ type AmazonSearchHit struct {
 }
 
 func GetAmazonJobs() ([]common.JobPosting, error) {
+	fmt.Println("Processing: ", "Amazon")
 	client := common.GetClient()
 
 	url := "https://www.amazon.jobs/api/jobs/search"

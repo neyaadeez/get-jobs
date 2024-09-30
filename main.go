@@ -23,15 +23,16 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Amazon, false)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Amex, false)
 
 	// workday.Init()
-	// resp, err := sites.GetAmazonJobs()
+	// resp, err := sites.GetAmexJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
 	// }
 	// fmt.Println(resp)
+	// fmt.Println(len(resp))
 
 	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
