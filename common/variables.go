@@ -18,6 +18,7 @@ var (
 	Visa       = "VISA"
 	Uber       = "UBER"
 	Databricks = "DTBS"
+	Amazon     = "AMZN"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -37,6 +38,7 @@ func checkDuplicatesComapnies() {
 		Visa,
 		Uber,
 		Databricks,
+		Amazon,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {

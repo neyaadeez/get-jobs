@@ -23,14 +23,15 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.SPGlobal, true)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Amazon, false)
 
 	// workday.Init()
-	// resp, err := sites.GetDatabricksJobs()
+	// resp, err := sites.GetAmazonJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
 	// }
+	// fmt.Println(resp)
 
 	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
