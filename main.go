@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/process"
 	"github.com/neyaadeez/go-get-jobs/readme"
 )
@@ -21,8 +22,8 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	processTodaysJobsDBAndReadme()
-	//process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Amex, false)
+	//processTodaysJobsDBAndReadme()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Adobe, true)
 
 	// workday.Init()
 	// resp, err := sites.GetAmexJobs()

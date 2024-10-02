@@ -35,6 +35,7 @@ var (
 	Tancent                 = "TNCT"
 	Mantech                 = "MTCH"
 	SPGlobal                = "SPGL"
+	Adobe                   = "ADBE"
 ) //////////////// Edit here
 
 var WorkdayCompanies = make(map[string]bool)
@@ -69,6 +70,7 @@ func checkAndInitWorkdayCompaniesList() {
 		Tancent,
 		Mantech,
 		SPGlobal,
+		Adobe,
 	} /////////////////// Edit here
 
 	for _, value := range values {
