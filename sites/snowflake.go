@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/neyaadeez/go-get-jobs/common"
+	commonconst "github.com/neyaadeez/go-get-jobs/common_const"
 )
 
 type SnowflakeMain struct {
@@ -169,7 +170,7 @@ type SnowflakeJobData struct {
 
 // UpdateSnowflakeJobs updates the local snowflake.json file with job details
 func UpdateSnowflakeJobs(newJobs []SnowflakeJobData) error {
-	filePath := "snowflake.json"
+	filePath := commonconst.SnowflakeHiringManagersFile
 
 	var existingJobs []SnowflakeJobData
 	if _, err := os.Stat(filePath); err == nil {
