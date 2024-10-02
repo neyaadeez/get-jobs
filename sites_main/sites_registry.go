@@ -36,6 +36,8 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetAmazonJobs()
 	case common.Amex:
 		return sites.GetAmexJobs()
+	case common.Snowflake:
+		return sites.GetSnowflakeJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
 	} //////////////////////// Edit here

@@ -23,10 +23,10 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Comcast, true)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Snowflake, false)
 
 	// workday.Init()
-	// resp, err := sites.GetAmexJobs()
+	// resp, err := sites.GetSnowflakeJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return

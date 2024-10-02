@@ -20,6 +20,7 @@ var (
 	Databricks = "DTBS"
 	Amazon     = "AMZN"
 	Amex       = "AMEX"
+	Snowflake  = "SFLK"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -41,6 +42,7 @@ func checkDuplicatesComapnies() {
 		Databricks,
 		Amazon,
 		Amex,
+		Snowflake,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {
