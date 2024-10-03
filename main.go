@@ -5,7 +5,6 @@ import (
 
 	"github.com/neyaadeez/go-get-jobs/process"
 	"github.com/neyaadeez/go-get-jobs/readme"
-	"github.com/neyaadeez/go-get-jobs/sites"
 )
 
 func processTodaysJobsDBAndReadme() {
@@ -22,17 +21,17 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	//processTodaysJobsDBAndReadme()
+	processTodaysJobsDBAndReadme()
 	//process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Snowflake, false)
 
 	// workday.Init()
-	resp, err := sites.GetSnowflakeJobs()
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-	fmt.Println(resp)
-	fmt.Println(len(resp))
+	// resp, err := sites.GetSnowflakeJobs()
+	// if err != nil
+	// 	fmt.Println(err.Error())
+	// 	return
+	// }
+	// fmt.Println(resp)
+	// fmt.Println(len(resp))
 
 	// fmt.Println(resp[0])
 	// fmt.Println(len(resp))
