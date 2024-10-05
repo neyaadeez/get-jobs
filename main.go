@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/process"
 	"github.com/neyaadeez/go-get-jobs/readme"
 )
@@ -21,12 +22,12 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	processTodaysJobsDBAndReadme()
-	//process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Snowflake, false)
+	//processTodaysJobsDBAndReadme()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Intuit, false)
 
 	// workday.Init()
-	// resp, err := sites.GetSnowflakeJobs()
-	// if err != nil
+	// resp, err := sites.GetIntuitJobs()
+	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
 	// }
