@@ -38,6 +38,7 @@ var (
 	Adobe                   = "ADBE"
 	Comcast                 = "CMCT"
 	Redhat                  = "REDH"
+	Symbotic                = "SYMC"
 ) //////////////// Edit here
 
 var WorkdayCompanies = make(map[string]bool)
@@ -75,6 +76,7 @@ func checkAndInitWorkdayCompaniesList() {
 		Adobe,
 		Comcast,
 		Redhat,
+		Symbotic,
 	} /////////////////// Edit here
 
 	for _, value := range values {
