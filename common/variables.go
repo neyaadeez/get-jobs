@@ -21,7 +21,7 @@ var (
 	Amazon     = "AMZN"
 	Amex       = "AMEX"
 	Snowflake  = "SFLK"
-	Intuit = "INTT"
+	Intuit     = "INTT"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
