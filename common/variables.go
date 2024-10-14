@@ -24,6 +24,7 @@ var (
 	Intuit     = "INTT"
 	IBM        = "IBMM"
 	ABB        = "ABBB"
+	AMD = "AMDD"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -49,6 +50,7 @@ func checkDuplicatesComapnies() {
 		Intuit,
 		IBM,
 		ABB,
+		AMD,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {

@@ -23,10 +23,10 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.ABB, false)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.AMD, false)
 
 	// workday.Init()
-	// resp, err := sites.GetIntuitJobs()
+	// resp, err := sites.GetAMDJobs()
 	// if err != nil {
 	// 	fmt.Println(err.Error())
 	// 	return
