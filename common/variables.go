@@ -23,6 +23,7 @@ var (
 	Snowflake  = "SFLK"
 	Intuit     = "INTT"
 	IBM        = "IBMM"
+	ABB        = "ABBB"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -47,6 +48,7 @@ func checkDuplicatesComapnies() {
 		Snowflake,
 		Intuit,
 		IBM,
+		ABB,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {

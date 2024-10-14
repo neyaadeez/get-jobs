@@ -42,6 +42,8 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetIntuitJobs()
 	case common.IBM:
 		return sites.GetIBMJobs()
+	case common.ABB:
+		return sites.GetABBJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
 	} //////////////////////// Edit here

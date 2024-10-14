@@ -204,13 +204,13 @@ func GetIBMJobs() ([]common.JobPosting, error) {
 
 	resp, err := client.R().SetHeader("Content-Type", "application/json").SetHeader("Accept", "application/json").SetBody(payload).Post(url)
 	if err != nil {
-		return nil, fmt.Errorf("error creating API request(amazon jobs): %v", err)
+		return nil, fmt.Errorf("error creating API request(ibm jobs): %v", err)
 	}
 
 	var ibmJobs IBMMain
 	err = json.Unmarshal(resp.Body(), &ibmJobs)
 	if err != nil {
-		return nil, fmt.Errorf("error parsing json (amazon jobs): %v", err)
+		return nil, fmt.Errorf("error parsing json (ibm jobs): %v", err)
 	}
 
 	var jobPostings []common.JobPosting
