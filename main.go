@@ -23,7 +23,7 @@ func processTodaysJobsDBAndReadme() {
 
 func main() {
 	//processTodaysJobsDBAndReadme()
-	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.AkunaCapital, false)
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Fortinet, false)
 
 	// workday.Init()
 	// resp, err := sites.GetAMDJobs()

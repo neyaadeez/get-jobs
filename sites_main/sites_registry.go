@@ -48,6 +48,8 @@ func FetchJobsByCompany(company string) ([]common.JobPosting, error) {
 		return sites.GetAMDJobs()
 	case common.AkunaCapital:
 		return sites.GetAkunaCapitalJobs()
+	case common.Fortinet:
+		return sites.GetFortinetJobs()
 	default:
 		return nil, fmt.Errorf("unknown company: %s", company)
 	} //////////////////////// Edit here
