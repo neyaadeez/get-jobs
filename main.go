@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/neyaadeez/go-get-jobs/common"
 	"github.com/neyaadeez/go-get-jobs/process"
 	"github.com/neyaadeez/go-get-jobs/readme"
 )
@@ -21,8 +22,8 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	processTodaysJobsDBAndReadme()
-	//process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Symbotic, true)
+	//processTodaysJobsDBAndReadme()
+	process.ProcessJobsWithDBForNewlyAddedJobPortal(common.IBM, false)
 
 	// workday.Init()
 	// resp, err := sites.GetIntuitJobs()
