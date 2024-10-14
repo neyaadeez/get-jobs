@@ -344,13 +344,13 @@ func amdJobs(offset int) ([]common.JobPosting, int, error) {
 
 	resp, err := client.R().Get(url)
 	if err != nil {
-		return nil, 0, fmt.Errorf("error creating API request(ibm jobs): %v", err)
+		return nil, 0, fmt.Errorf("error creating API request(amd jobs): %v", err)
 	}
 
 	var amdJobs AMDMain
 	err = json.Unmarshal(resp.Body(), &amdJobs)
 	if err != nil {
-		return nil, 0, fmt.Errorf("error parsing json (ibm jobs): %v", err)
+		return nil, 0, fmt.Errorf("error parsing json (amd jobs): %v", err)
 	}
 
 	var jobPostings []common.JobPosting
