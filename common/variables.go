@@ -28,6 +28,7 @@ var (
 	AkunaCapital = "AKUN"
 	Fortinet     = "FORT"
 	Reddit       = "REDT"
+	NetApp       = "NAPP"
 ) //////////////////////// Edit here
 
 var AllCompanies = make(map[string]bool)
@@ -57,6 +58,7 @@ func checkDuplicatesComapnies() {
 		AkunaCapital,
 		Fortinet,
 		Reddit,
+		NetApp,
 	} ///////////////////////// Edit here
 
 	for _, value := range values {
