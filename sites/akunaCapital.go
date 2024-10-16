@@ -48,7 +48,7 @@ func GetAkunaCapitalJobs() ([]common.JobPosting, error) {
 		}
 
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.AkunaCapital,
+			Company:      "Akuna Capital",
 			JobId:        common.AkunaCapital + ":" + strconv.Itoa(int(job.ID)),
 			JobTitle:     job.Name,
 			Location:     location,

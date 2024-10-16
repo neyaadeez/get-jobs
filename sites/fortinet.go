@@ -171,7 +171,7 @@ func GetFortinetJobs() ([]common.JobPosting, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range fortinetJobs.Items[0].RequisitionList {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.Fortinet,
+			Company:      "Fortinet",
 			JobId:        common.Fortinet + ":" + job.ID,
 			JobTitle:     job.Title,
 			Location:     job.PrimaryLocation,

@@ -356,7 +356,7 @@ func amdJobs(offset int) ([]common.JobPosting, int, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range amdJobs.Jobs {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.AMD,
+			Company:      "AMD",
 			JobId:        common.AMD + ":" + job.Data.ReqID,
 			JobTitle:     job.Data.Title,
 			Location:     job.Data.LocationName,

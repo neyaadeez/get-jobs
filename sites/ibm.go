@@ -216,7 +216,7 @@ func GetIBMJobs() ([]common.JobPosting, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range ibmJobs.Hits.Hits {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.IBM,
+			Company:      "IBM",
 			JobId:        common.IBM + ":" + job.ID,
 			JobTitle:     job.Source.Title,
 			Location:     job.Source.FieldKeyword19,

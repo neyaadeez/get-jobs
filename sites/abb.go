@@ -252,7 +252,7 @@ func GetABBJobs() ([]common.JobPosting, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range abbJobs.RefineSearch.Data.Jobs {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.ABB,
+			Company:      "ABB",
 			JobId:        common.ABB + ":" + job.ReqID,
 			JobTitle:     job.Title,
 			Location:     job.Location,

@@ -115,7 +115,7 @@ func redditJobs(page int) ([]common.JobPosting, int, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range redditJobs.JobPosts.Data {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      common.Reddit,
+			Company:      "Reddit",
 			JobId:        common.Reddit + ":" + strconv.Itoa(int(job.ID)),
 			JobTitle:     job.Title,
 			Location:     job.Location,

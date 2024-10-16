@@ -76,8 +76,8 @@ func extractJobDetails(n *html.Node) []common.JobPosting {
 
 		if jobID != "" && jobTitle != "" {
 			job := common.JobPosting{
-				Company:      common.NetApp + ":" + jobID,
-				JobId:        jobID,
+				Company:      "NetApp",
+				JobId:        common.NetApp + ":" + jobID,
 				JobTitle:     jobTitle,
 				Location:     jobLocation,
 				ExternalPath: externalPath,
