@@ -24,10 +24,15 @@ type TeslaGeo struct {
 	Sites []TeslaSite `json:"sites"`
 }
 
+type TeslaCity struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
 type TeslaSite struct {
-	ID     string              `json:"id"`
-	States []TeslaState        `json:"states,omitempty"`
-	Cities map[string][]string `json:"cities,omitempty"`
+	ID     string       `json:"id"`
+	States []TeslaState `json:"states,omitempty"`
+	// Cities []TeslaCity  `json:"cities,omitempty"` // Adjusted to be a slice of TeslaCity objects
 }
 
 type TeslaState struct {
@@ -43,6 +48,7 @@ type TeslaListing struct {
 	F  string `json:"f"`
 	L  string `json:"l"`
 	Y  int64  `json:"y"`
+	SP int64  `json:"sp"`
 }
 
 type TeslaLookup struct {
@@ -52,6 +58,52 @@ type TeslaLookup struct {
 	Departments map[string]string `json:"departments"`
 	Types       map[string]string `json:"types"`
 }
+
+type TeslaCities struct {
+	AnythingArray  []interface{}
+	StringArrayMap map[string][]string
+}
+
+// type TeslaMain struct {
+// 	Lookup      TeslaLookup         `json:"lookup"`
+// 	Departments map[string][]string `json:"departments"`
+// 	Geo         []TeslaGeo          `json:"geo"`
+// 	Listings    []TeslaListing      `json:"listings"`
+// }
+
+// type TeslaGeo struct {
+// 	ID    string      `json:"id"`
+// 	Sites []TeslaSite `json:"sites"`
+// }
+
+// type TeslaSite struct {
+// 	ID     string              `json:"id"`
+// 	States []TeslaState        `json:"states,omitempty"`
+// 	Cities map[string][]string `json:"cities,omitempty"`
+// }
+
+// type TeslaState struct {
+// 	ID     string              `json:"id"`
+// 	Name   string              `json:"name"`
+// 	Cities map[string][]string `json:"cities"`
+// }
+
+// type TeslaListing struct {
+// 	ID string `json:"id"`
+// 	T  string `json:"t"`
+// 	DP string `json:"dp"`
+// 	F  string `json:"f"`
+// 	L  string `json:"l"`
+// 	Y  int64  `json:"y"`
+// }
+
+// type TeslaLookup struct {
+// 	Regions     map[string]string `json:"regions"`
+// 	Sites       map[string]string `json:"sites"`
+// 	Locations   map[string]string `json:"locations"`
+// 	Departments map[string]string `json:"departments"`
+// 	Types       map[string]string `json:"types"`
+// }
 
 func GetTeslaJobs() ([]common.JobPosting, error) {
 	fmt.Println("Processing: ", "Tesla")
@@ -180,6 +232,7 @@ func fetchTeslaJobsData(cookies string) (*TeslaMain, error) {
 	}
 
 	var teslaResponse TeslaMain
+	fmt.Println(string(bodyBytes))
 	if err := json.Unmarshal(bodyBytes, &teslaResponse); err != nil {
 		return nil, fmt.Errorf("error parsing API response: %v", err)
 	}
