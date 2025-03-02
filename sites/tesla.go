@@ -232,7 +232,7 @@ func fetchTeslaJobsData(cookies string) (*TeslaMain, error) {
 	}
 
 	var teslaResponse TeslaMain
-	fmt.Println(string(bodyBytes))
+	// fmt.Println(string(bodyBytes))
 	if err := json.Unmarshal(bodyBytes, &teslaResponse); err != nil {
 		return nil, fmt.Errorf("error parsing API response: %v", err)
 	}
