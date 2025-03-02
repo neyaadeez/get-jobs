@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/neyaadeez/go-get-jobs/readme"
-	"github.com/neyaadeez/go-get-jobs/sites"
 )
 
 func processTodaysJobsDBAndReadme() {
@@ -21,7 +20,7 @@ func processTodaysJobsDBAndReadme() {
 }
 
 func main() {
-	// processTodaysJobsDBAndReadme()
+	processTodaysJobsDBAndReadme()
 	// process.ProcessJobsWithDBForNewlyAddedJobPortal(common.Nokia, false)
 
 	// workday.Init()
@@ -44,11 +43,11 @@ func main() {
 	// fmt.Println(jobs[0])
 	// fmt.Println("All Jobs: ", len(jobs))
 
-	jobs, err := sites.GetTeslaJobs()
-	if err != nil {
-		fmt.Println(err)
-	}
+	// jobs, err := sites.GetTeslaJobs()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 
-	fmt.Println(jobs)
+	// fmt.Println(jobs)
 
 }
