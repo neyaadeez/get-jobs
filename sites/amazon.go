@@ -105,7 +105,7 @@ func GetAmazonJobs() ([]common.JobPosting, error) {
 	var jobPostings []common.JobPosting
 	for _, job := range amazonJobs.SearchHits {
 		jobPostings = append(jobPostings, common.JobPosting{
-			Company:      job.Fields["companyName"][0],
+			// Company:      job.Fields["companyName"][0],
 			JobId:        common.Amazon + ":" + job.Fields["icimsJobId"][0],
 			JobTitle:     job.Fields["title"][0],
 			Location:     job.Fields["location"][0],
